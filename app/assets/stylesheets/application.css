@@ -45,14 +45,7 @@ summary {
   display: block;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-a {
+h1,h2,h3,h4,h5,h6,p,a {
   -ms-word-wrap: break-word;
   word-wrap: break-word;
   text-decoration: none;
@@ -60,10 +53,6 @@ a {
 
 img {
   border: none;
-}
-
-*:focus {
-  outline: none;
 }
 
 .clearfix::after {
@@ -74,7 +63,7 @@ img {
 
 .bg-illustration {
   position: relative;
-  height: 100vh;
+  height: 90vh;
   width: 1194px;
   background: url("https://i.ibb.co/RhMZprS/jony-Image2-1.png") no-repeat center center scroll;
   background-size: cover;
@@ -84,10 +73,7 @@ img {
 }
 .bg-illustration img {
   width: 248px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
   height: auto;
   margin: 19px 0 0 25px;
 }
@@ -172,27 +158,6 @@ input{
     overflow-x: hidden;
   }
 
-  @-webkit-keyframes slideIn {
-    from {
-      left: -100%;
-      opacity: 0;
-    }
-    to {
-      left: 0;
-      opacity: 1;
-    }
-  }
-
-  @keyframes slideIn {
-    from {
-      left: -100%;
-      opacity: 0;
-    }
-    to {
-      left: 0;
-      opacity: 1;
-    }
-  }
   .bg-illustration {
     float: none;
     background: url("https://i.ibb.co/rwncw7s/bg-mobile.png") center center;
@@ -249,4 +214,20 @@ input{
   .login .container .login-form {
     margin-top: 90px;
   }
+}
 
+.parent.clearfix{
+    max-width: 1200px;
+    margin: auto;
+}
+
+.field{
+    overflow: auto;
+    align-items: center;
+}
+
+.field input{
+        width: 20px;
+        float: left;
+        margin-top: 7px;
+}

@@ -13,7 +13,7 @@
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="login">
       <div class="container">
-        <h1>Login to access to<br />your account</h1>
+        <h1>ログイン</h1>
         <div class="login-form">
              <div class="label">
                 <%= f.label :email %><br />
@@ -41,13 +41,8 @@
             </div>
 
         </div>
-    
+                <%= render "devise/shared/links" %>
       </div>
       </div>
-      
       <% end %>
   </div>
-  
-   
-            
-    <%= render "devise/shared/links" %>
