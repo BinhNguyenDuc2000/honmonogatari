@@ -65,7 +65,7 @@ img {
   position: relative;
   height: 90vh;
   width: 1194px;
-  background: url("https://i.ibb.co/RhMZprS/jony-Image2-1.png") no-repeat center center scroll;
+  background: url("https://i.pinimg.com/originals/56/25/e4/5625e4a1c180a85d771402d7bb4a329f.jpg") no-repeat center center scroll;
   background-size: cover;
   float: left;
   -webkit-animation: bgslide 2.3s forwards;
@@ -134,9 +134,11 @@ img {
 input{
     display: block;
     width: 100%;
+    line-height: 1.5;
+    border: 1px solid #ced4da;
 }
 
-.submit input{
+.actions input{
     background-color: #A2A9F3;
     color: #fff;
 }
