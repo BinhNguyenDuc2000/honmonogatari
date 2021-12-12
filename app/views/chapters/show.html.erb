@@ -1,10 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-
-
 <p>
   <strong>Book:</strong>
-  <%=link_to @chapter.book.title, @chapter.book %>
+  <%=link_to @book.title, @book %>
 </p>
 
 <p>
@@ -13,9 +11,23 @@
 </p>
 
 <p>
-  <strong>Content</strong>
+  <strong>Chapter #:</strong>
+  <%= @chapter.chapter_order %>
+</p>
+
+<p>
+  <strong>Content:<br></strong>
   <%= @chapter.content %>
 </p>
 
+<% if @has_next %>
+    <p><%= link_to "Next Chapter", @book.chapter[@book.chapter.index(@chapter)-1]%></p>
+<% end %>
 
+<% if @has_prev %>
+    <p><%= link_to "Previous Chapter", @book.chapter[@book.chapter.index(@chapter)+1]%></p>
+<% end %>
+
+
+<p><%= link_to "Edit Chapter", edit_chapter_path(@chapter)%></p>
 <p><%= link_to "Delete Chapter", @chapter, method: :delete, data: { confirm: 'Are you sure?' } %></p>

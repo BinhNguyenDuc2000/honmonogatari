@@ -24,13 +24,17 @@
 <h2>Chapter Form</h2>
 <%= form_with(model: @chapter, local: true) do |form| %>
   <div class= "field">
-    <%= form.label :title%>
+    <%= form.label :title, "Title:"%><br>
     <%= form.text_area :title %>
     <%= form.hidden_field :book_id, :value => @book.id %>
   </div>
   <div class= "field">
-    <%= form.label :content%>
-    <%= form.text_area :content %>
+    <%= form.label :order, "Chapter #:"%><br>
+    <%= form.text_area :order%>
+  </div>
+  <div class= "field">
+    <%= form.label :content, "Content:"%><br>
+    <%= form.text_area :content%>
   </div>
   <div class="actions">
     <%= form.submit %>

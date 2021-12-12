@@ -1,11 +1,10 @@
 class ChaptersController < ApplicationController
     before_action :set_chapter, only: %i[ show edit update destroy ]
 
-  def index
-    @chapter = Chapter.all
-  end
-
   def show
+      @book = @chapter.book
+      @has_next = @book.chapter.index(@chapter) > 0
+      @has_prev = @book.chapter.index(@chapter) < @book.number_of_chapters - 1
   end
 
   def new
@@ -18,10 +17,10 @@ class ChaptersController < ApplicationController
   def create
     @chapter = Chapter.new(chapter_params)
     @chapter.user_id = current_user.id
-    @chapter.book.number_of_chapters = @chapter.book.chapter.length()+1
-    @chapter.order = @chapter.book.number_of_chapters
+    @book = @chapter.book
+    @book.number_of_chapters = @book.chapter.length()+1
     respond_to do |format|
-      if @chapter.save && @chapter.book.save
+      if @chapter.save && @book.save
         url = "/books/" + @chapter.book_id.to_s
         format.html { redirect_to url, notice: 'Chapter was successfully created.' }
         format.json { render :show, status: :created, location: @chapter}
@@ -45,10 +44,11 @@ class ChaptersController < ApplicationController
   end
 
   def destroy
-    @chapter.book.number_of_chapters += -1
+    @book = @chapter.book
+    @book.number_of_chapters += -1
     respond_to do |format|
-        if @chapter.destroy && @chapter.book.save
-            format.html { redirect_to chapter_url, notice: "Book review was successfully destroyed." }
+        if @chapter.destroy && @book.save
+            format.html { redirect_to @book, notice: "Chapter was successfully destroyed." }
             format.json { head :no_content }
         end
     end
@@ -62,6 +62,6 @@ class ChaptersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def chapter_params
-      params.require(:chapter).permit(:book_id, :user_id, :title, :content)
+      params.require(:chapter).permit(:book_id, :user_id, :title, :content, :chapter_order, :image)
     end
 end
