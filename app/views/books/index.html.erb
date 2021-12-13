@@ -47,7 +47,7 @@
             <td class="list_description">
                 <dl>
                     <dt><%= book.title %></dt>
-                    <dn><%= book.category.category%></dn>
+                    <dd>Genres: <%= book.category.category%></dd>
                     
                     <dd><%= truncate(strip_tags(book.description),
                             :length => 80) %></dd>
