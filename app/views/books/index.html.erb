@@ -31,6 +31,7 @@
     <% end %>
   </tbody>
 </table> -->
+
 <div id="product_list">
 <th><%= link_to "Sort by alphabet", :sort => "title"%> </th></br>
 <th><%= link_to "Sort by num of chapters", :sort => "number_of_chapters"%> </th>
@@ -46,6 +47,7 @@
             <td class="list_description">
                 <dl>
                     <dt><%= book.title %></dt>
+                    <dn>Category: <%= Category.where('id LIKE ?', "%#{book.category}%")[0].category %></dn>
                     <dd><%= truncate(strip_tags(book.description),
                             :length => 80) %></dd>
                     <dn><%= book.number_of_chapters %> chapters</dn>

@@ -4,6 +4,7 @@ class BooksController < ApplicationController
   # GET /books or /books.json
   def index
     #@books = Book.all
+    @categories = Category.all
     @books = if params[:term]
     Book.where('title LIKE ?', "%#{params[:term]}%")
     elsif params[:sort] != "title"
@@ -14,19 +15,23 @@ class BooksController < ApplicationController
                  Book.all
         end
     end
+    
 
   # GET /books/1 or /books/1.json
   def show
+      @categories = Category.all
       @chapter = Chapter.new
   end
 
   # GET /books/new
   def new
+      @categories = Category.all
     @book = Book.new
   end
 
   # GET /books/1/edit
   def edit
+      @categories = Category.all
   end
 
   # POST /books or /books.json
@@ -78,6 +83,6 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:title, :number_of_chapters, :cover, :description, :term, :sort)
+      params.require(:book).permit(:title, :number_of_chapters, :cover, :description,:category, :term, :sort)
     end
 end
