@@ -7,10 +7,12 @@
   <tbody>
     <% @books.each do |book| %>
       <tr>
+            <% if book.cover.attached? %>
             <td>
               <%= link_to image_tag(book.cover), book %>
-              </td>
-            </tr>
+            </td>
+      </tr>
+            <% end %>
       <tr>
         <td><%= link_to book.title, book %></td>
         <td>Number of chapters:<%= book.number_of_chapters %></td>
