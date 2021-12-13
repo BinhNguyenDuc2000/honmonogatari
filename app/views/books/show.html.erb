@@ -49,7 +49,33 @@
    <% end %>
 </ul>
 
-
+  <div class="col">
+    <div class="card bg-light mb-3" style="max-width: 40rem;">
+      <h1>Review</h1>
+      <div class="card-body">
+        <ul>
+          <% @book.book_review.each do |book_review|%>
+          　<div class="card border-light mb-3" style="max-width: 20rem;">
+              <div class="card-header">user:<%= book_review.user.email %></div>
+              <div class="card-body">
+                <p class="card-text">comment:<%= book_review.review %></p>
+                <span ><%= link_to 'Destroy', book_review, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+              </div>
+            </div>
+          <% end %>
+        </ul>
+      <%= form_with(model: @book_review, local: true) do |form| %>
+        <div class= "field">
+          <%= form.text_area :review, :class => "form-control" %>
+          <%= form.hidden_field :book_id, :value => @book.id %>
+        </div>
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+       <% end %>
+       </div>
+    </div>
+  </div>
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
