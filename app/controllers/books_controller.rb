@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-    before_action :set_book, only: %i[ show edit update destroy ]
+  before_action :set_book, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
   # GET /books or /books.json
   def index
@@ -23,7 +23,7 @@ class BooksController < ApplicationController
   # POST /books or /books.json
   def create
     @book = Book.new(book_params)
-    @book.chapter = 0
+    @book.number_of_chapters = 0
 
     respond_to do |format|
       if @book.save
