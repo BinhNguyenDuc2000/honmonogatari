@@ -28,6 +28,9 @@
 #product_list .list_description dd {
     margin: 0;
 }
+#product_list .list_description dn {
+    font-weight: bold;
+}
  
 #product_list .list_actions {
     width: 300px;
@@ -42,5 +45,5 @@
 }
  
 #product_list .list_line_odd {
-   background: #E6E6FA;
+   background: #F6E9E4;
 }

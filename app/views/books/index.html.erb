@@ -2,7 +2,14 @@
 
 <h1>Books</h1>
 
-<div id="product_list">
+          <div>
+              <p>Search book: </p>
+        <%= form_tag(books_path, method: :get) do %>
+        <%= text_field_tag :term %>
+        <%= submit_tag 'Search' %>
+        <% end %>
+    </div>
+
 <!-- <table>
 
   <tbody>
@@ -24,27 +31,31 @@
     <% end %>
   </tbody>
 </table> -->
-
+<div id="product_list">
+<th><%= link_to "Sort by alphabet", :sort => "title"%> </th></br>
+<th><%= link_to "Sort by num of chapters", :sort => "number_of_chapters"%> </th>
 <table>
-    <% @books.each do |product| %>
+    
+    <% @books.each do |book| %>
         <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
   
             <td>
-                <%= image_tag(product.cover, :class => 'list_image') %>
+                <%= image_tag(book.cover, :class => 'list_image') %>
             </td>
   
             <td class="list_description">
                 <dl>
-                    <dt><%= product.title %></dt>
-                    <dd><%= truncate(strip_tags(product.description),
+                    <dt><%= book.title %></dt>
+                    <dd><%= truncate(strip_tags(book.description),
                             :length => 80) %></dd>
+                    <dn><%= book.number_of_chapters %> chapters</dn>
                 </dl>
             </td>
   
             <td class="list_actions">
-                <%= link_to 'Show', product %><br/>
-                <%= link_to 'Edit', edit_book_path(product) %><br/>
-                <%= link_to 'Destroy', product, 
+                <%= link_to 'Show', book %><br/>
+                <%= link_to 'Edit', edit_book_path(book) %><br/>
+                <%= link_to 'Destroy', book,
                     data: { confirm: 'Are you sure?' },
                     :method => :delete %>
             </td>
@@ -55,3 +66,7 @@
 <br>
 
 <%= link_to 'New Book', new_book_path %>
+<br>
+<div class="button">
+    <%= link_to 'Return home', '/', :method => :get %>
+</div> 
