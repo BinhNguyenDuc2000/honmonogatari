@@ -12,7 +12,7 @@ class BooksController < ApplicationController
         elsif  params[:sort] != "number_of_chapters"
             Book.order(params[:sort])
              else
-                 Book.all
+                 Book.join(:categories).all
         end
     end
     
@@ -36,9 +36,11 @@ class BooksController < ApplicationController
 
   # POST /books or /books.json
   def create
+      book_params[:category_id] = book_params[:category_id].to_i
     @book = Book.new(book_params)
     
     @book.number_of_chapters = 0
+    
 
     respond_to do |format|
       if @book.save
@@ -83,6 +85,6 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:title, :number_of_chapters, :cover, :description,:category, :term, :sort)
+      params.require(:book).permit(:title, :number_of_chapters, :cover, :description,:category_id, :term, :sort)
     end
 end

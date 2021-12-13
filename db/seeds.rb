@@ -6,12 +6,25 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Book.delete_all
+Category.delete_all
+Chapter.delete_all
+Category.create(:category => 'Children',
+:description => "Story for children under 12 years old")
+Category.create(:category => 'Fantasy',
+:description => "Magic and folkfore")
+Category.create(:category => 'Romance',
+:description => "Love story")
+Category.create(:category => 'Romancejrejfier',
+:description => "Love storykfkd")
+
+
 Book.create(:title => 'The Miracle',
     :description => 
     %{
         A fantasy book for children.
     },
-    :number_of_chapters => 5)
+    :number_of_chapters => 5, 
+    :cover => "1.png")
 
 Chapter.create(:title =>"Chap 1",
     :content => "helllooo bonjour hihihi ",
@@ -40,7 +53,8 @@ Book.create(:title => 'Sailormoon',
     %{
         sailormoon, sailor jupyter, sailor mars, sailor venus.
     },
-    :number_of_chapters => 1)
+    :number_of_chapters => 1,
+    :cover => "1.png")
 Chapter.create(:title =>"Chap 1",
     :content => "sailor moon say hello ",
     :book_id => 2,
@@ -51,14 +65,15 @@ Book.create(:title => 'Naruto',
     %{
         Hokage adventure naruto finding sasuke
     },
-    :number_of_chapters => 0)
+    :number_of_chapters => 0,
+    :cover => "1.png")
 
 Book.create(:title => 'Doraemon',
     :description =>
     %{
         Doraemon, Nobita, Shizuka, Suneo, Jajan, Dekisugi
     },
-    :number_of_chapters => 7)
+    :number_of_chapters => 7, :cover => "1.png")
 Chapter.create(:title =>"Chap 1",
     :content => "this is a chapter 1 ",
     :book_id => 4,
@@ -92,7 +107,8 @@ Book.create(:title => 'Harry Potter',
     %{
         Hogwwart and wizard and witch 
     },
-    :number_of_chapters => 1)
+    :number_of_chapters => 1,
+    :cover => "1.png")
 Chapter.create(:title =>"Chap 1",
     :content => "this is a chapter the boy who lives ",
     :book_id => 5,

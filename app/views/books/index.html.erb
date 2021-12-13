@@ -47,7 +47,8 @@
             <td class="list_description">
                 <dl>
                     <dt><%= book.title %></dt>
-                    <dn>Category: <%= Category.where('id LIKE ?', "%#{book.category}%")[0].category %></dn>
+                    <dn><%= book.category.category%></dn>
+                    
                     <dd><%= truncate(strip_tags(book.description),
                             :length => 80) %></dd>
                     <dn><%= book.number_of_chapters %> chapters</dn>
@@ -72,3 +73,5 @@
 <div class="button">
     <%= link_to 'Return home', '/', :method => :get %>
 </div> 
+
+<%= link_to 'Add Category', "/categories", method: :GET %>
