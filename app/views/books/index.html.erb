@@ -2,52 +2,44 @@
 
 <h1>Books</h1>
 
-          <div>
-              <p>Search book: </p>
+    <div>
+        <p>Search book: </p>
         <%= form_tag(books_path, method: :get) do %>
-        <%= text_field_tag :term %>
+        <%= text_field_tag :term , params[:term]%>
         <%= submit_tag 'Search' %>
+        
+        <% end %>
+    </div>
+    
+    <div>
+        <p>Search genres: </p>
+        <%= form_tag(books_path, method: :get) do %>
+        <%= text_field_tag :filter %>
+        <%= submit_tag 'Filter' %>
         <% end %>
     </div>
 
-<!-- <table>
 
-  <tbody>
-    <% @books.each do |book| %>
-      <tr>
-            <td>
-              <%= link_to image_tag(book.cover), book %>
-              </td>
-            </tr>
-      <tr>
-        <td><%= link_to book.title, book %></td>
-        <td>Number of chapters:<%= book.number_of_chapters %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-      
-      
-    <% end %>
-  </tbody>
-</table> -->
+
+  
+
 
 <div id="product_list">
 <th><%= link_to "Sort by alphabet", :sort => "title"%> </th></br>
 <th><%= link_to "Sort by num of chapters", :sort => "number_of_chapters"%> </th>
 <table>
-    
+    <% if @books != nil %>
     <% @books.each do |book| %>
         <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
   
             <td>
-                <%= image_tag(book.cover, :class => 'list_image') %>
+                <%= image_tag(book.cover, :class => 'list_image') if book.cover.attached?%>
             </td>
   
             <td class="list_description">
                 <dl>
                     <dt><%= book.title %></dt>
-                    <dd>Genres: <%= book.category.category%></dd>
+                    <dd>Genres: <%= book.category.category if book.category != nil%></dd>
                     
                     <dd><%= truncate(strip_tags(book.description),
                             :length => 80) %></dd>
@@ -63,6 +55,7 @@
                     :method => :delete %>
             </td>
         </tr>
+    <% end %>
     <% end %>
     </table>
 </div>
