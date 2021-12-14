@@ -2,7 +2,7 @@
 
 <h1>Books</h1>
 
-    <div>
+    <div class = "class-search">
         <p>Search book: </p>
         <%= form_tag(books_path, method: :get) do %>
         <%= text_field_tag :term , params[:term]%>
@@ -11,7 +11,7 @@
         <% end %>
     </div>
     
-    <div>
+    <div class = "class-filter">
         <p>Search genres: </p>
         <%= form_tag(books_path, method: :get) do %>
         <%= text_field_tag :filter %>
