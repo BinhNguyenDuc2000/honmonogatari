@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'histories/show'
   resources :book_reviews
   get 'home/index'
   resources :books

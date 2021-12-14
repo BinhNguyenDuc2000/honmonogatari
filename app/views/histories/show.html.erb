@@ -1,0 +1,17 @@
+<h1>Histories#show</h1>
+
+<h1>User:</h1>
+
+<table>
+    
+    <tbody>
+        <% @histories.each do |history| %>
+          <tr>
+              <% if history.user_id == current_user.id %>
+              <td>
+                  <%= @history.book_id %>
+              </td>
+          </tr>
+        <% end %>
+    </tbody>
+</table>
