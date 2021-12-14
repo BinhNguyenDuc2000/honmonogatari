@@ -72,6 +72,12 @@ class BooksController < ApplicationController
 
   # DELETE /books/1 or /books/1.json
   def destroy
+    if @book.cover.attached?
+        @book.cover.destroy
+    end
+    @book.chapter.each do |chapter| 
+        chapter.destroy
+    end
     @book.destroy
     respond_to do |format|
       format.html { redirect_to books_url, notice: "Book was successfully destroyed." }

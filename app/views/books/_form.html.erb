@@ -27,10 +27,9 @@
 
   <%= form.select(:category_id, options_from_collection_for_select(@categories,:id, :category)) %>
   
-
   </div>
   
-   <div class="field">
+   <div>
     <%= form.label :cover %><br>
     <%= form.file_field :cover %><br>
   </div>

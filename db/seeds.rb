@@ -5,7 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 Chapter.delete_all
+Book.delete(:cover)
 Book.delete_all
 Category.delete_all
 
