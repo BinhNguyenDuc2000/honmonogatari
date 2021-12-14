@@ -9,11 +9,12 @@
   <strong>Number of chapters:</strong>
   <%= @book.number_of_chapters %>
 </p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @book.category.category%>
-</p>
+<% if @book.category %>
+    <p>
+      <strong>Category:</strong>
+      <%= @book.category.category%>
+    </p>
+<% end %>
 <p>
   <strong>Description:</strong>
   <%= @book.description %>
@@ -33,8 +34,8 @@
     <%= form.hidden_field :book_id, :value => @book.id %>
   </div>
   <div class= "field">
-    <%= form.label :order, "Chapter #:"%><br>
-    <%= form.text_area :order%>
+    <%= form.label :chapter_order, "Chapter #:"%><br>
+    <%= form.text_area :chapter_order%>
   </div>
   <div class= "field">
     <%= form.label :content, "Content:"%><br>

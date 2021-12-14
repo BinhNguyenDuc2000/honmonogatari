@@ -5,9 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Chapter.delete_all
 Book.delete_all
 Category.delete_all
-Chapter.delete_all
+
 
 
 Category.create(:category => 'Children',
@@ -31,22 +32,27 @@ Book.create!(:title => 'The Miracle',
     )
 Chapter.create(:title =>"Chap 1",
     :content => "helllooo bonjour hihihi ",
+    :chapter_order => 1,
     :book_id => 1,
     :user_id => 1)
 Chapter.create(:title =>"Chap 2",
     :content => "helllooo hihihi to the moon",
+    :chapter_order => 2,
     :book_id => 1,
     :user_id => 1)
 Chapter.create(:title =>"Chap 3",
     :content => "this is a chapter ",
+    :chapter_order => 3,
     :book_id => 1,
     :user_id => 1)
 Chapter.create(:title =>"Chap 4",
     :content => "this is a chapter 4 heloo ",
+    :chapter_order => 4,
     :book_id => 1,
     :user_id => 1)
 Chapter.create(:title =>"Chap 5",
     :content => "this is a chapter 5 hihih ",
+    :chapter_order => 5,
     :book_id => 1,
     :user_id => 1)
     

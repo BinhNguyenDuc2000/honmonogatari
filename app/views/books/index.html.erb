@@ -33,12 +33,14 @@
         <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
   
             <td>
-                <%= image_tag(book.cover, :class => 'list_image') if book.cover.attached?%>
+                <% if book.cover.attached? %>
+                    <%= link_to image_tag(book.cover, :class => 'list_image'), book%>
+                <% end %>
             </td>
   
             <td class="list_description">
                 <dl>
-                    <dt><%= book.title %></dt>
+                    <dt><%= link_to book.title, book %></dt>
                     <dd>Genres: <%= book.category.category if book.category != nil%></dd>
                     
                     <dd><%= truncate(strip_tags(book.description),

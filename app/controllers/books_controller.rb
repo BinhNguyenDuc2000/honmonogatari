@@ -7,7 +7,7 @@ class BooksController < ApplicationController
     @categories = Category.all
     @books = if params[:term]
     Book.where('title LIKE ?', "%#{params[:term]}%")
-elsif params[:filter]
+    elsif params[:filter]
     Book.joins(:category).where('categories.category LIKE ?',"%#{params[:filter]}%")
     
     elsif params[:sort] != "title"
