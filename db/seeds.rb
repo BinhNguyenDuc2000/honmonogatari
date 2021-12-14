@@ -67,14 +67,13 @@ Chapter.create(:title =>"Chap 5",
     :chapter_order => 5,
     :book_id => 1,
     :user_id => 1)
-    
-    
 Book.create(:title => 'Sailormoon',
     :description =>
     %{
         sailormoon, sailor jupyter, sailor mars, sailor venus.
     },
     :number_of_chapters => 1,
+
         :category_id =>3
 )
 
@@ -86,6 +85,7 @@ Chapter.create(:title =>"Chap 1",
     )
     
 Book.create(:title => 'Naruto',
+    :user_id => 1)
     :description =>
     %{
         Hokage adventure naruto finding sasuke
@@ -137,10 +137,7 @@ Chapter.create(:title =>"Chap 7",
     :book_id => 4,
     :user_id => 1,
     :chapter_order =>7)
-    
-    
-    
-    
+
 Book.create(:title => 'Harry Potter',
     :description =>
     %{
@@ -153,3 +150,4 @@ Chapter.create(:title =>"Chap 1",
     :book_id => 5,
     :user_id => 1,
     :chapter_order =>1)
+
