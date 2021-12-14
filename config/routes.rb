@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :categories
   get 'category/index'
+  resources :book_reviews
   get 'home/index'
   resources :books
   resources :chapters

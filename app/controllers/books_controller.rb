@@ -25,6 +25,7 @@ class BooksController < ApplicationController
   def show
       @categories = Category.all
       @chapter = Chapter.new
+      @book_review = BookReview.new
   end
 
   # GET /books/new
