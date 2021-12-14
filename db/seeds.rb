@@ -42,6 +42,11 @@ Book.create(:title => 'The Miracle',
     :number_of_chapters => 5,
     :category_id => 1
     )
+    
+BookReview.create(
+    :review => "Nai xà",
+    :book_id => 1,
+    :user_id => 1)
 Chapter.create(:title =>"Chap 1",
     :content => "helllooo bonjour hihihi ",
     :chapter_order => 1,
@@ -85,7 +90,6 @@ Chapter.create(:title =>"Chap 1",
     )
     
 Book.create(:title => 'Naruto',
-    :user_id => 1)
     :description =>
     %{
         Hokage adventure naruto finding sasuke
@@ -150,4 +154,6 @@ Chapter.create(:title =>"Chap 1",
     :book_id => 5,
     :user_id => 1,
     :chapter_order =>1)
+    
+
 
