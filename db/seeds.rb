@@ -7,30 +7,40 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Chapter.delete_all
-Book.delete(:cover)
+BookReview.delete_all
+Book.all.each do |book|
+    if not book.cover.blank?
+        book.cover.destroy
+    end
+end
 Book.delete_all
 Category.delete_all
 
+Category.create(
+    :id =>1,
+    :category => 'Children',
+    :description => "Story for children under 12 years old")
+Category.create(
+    :id =>2,
+    :category => 'Fantasy',
+    :description => "Magic and folkfore")
+Category.create(
+    :id =>3,
+    :category => 'Romance',
+    :description => "Love story")
+Category.create(
+    :id =>4,
+    :category => 'Horror',
+    :description => "Scaredddd story"
+    )
 
-
-Category.create(:category => 'Children',
-:description => "Story for children under 12 years old")
-Category.create(:category => 'Fantasy',
-:description => "Magic and folkfore")
-Category.create(:category => 'Romance',
-:description => "Love story")
-Category.create(:category => 'Horror',
-:description => "Scaredddd story")
-
-
-
-Book.create!(:title => 'The Miracle',
+Book.create(:title => 'The Miracle',
     :description => 
     %{
         A fantasy book for children.
     },
     :number_of_chapters => 5,
-    
+    :category_id => 1
     )
 Chapter.create(:title =>"Chap 1",
     :content => "helllooo bonjour hihihi ",
@@ -59,75 +69,87 @@ Chapter.create(:title =>"Chap 5",
     :user_id => 1)
     
     
-# Book.create(:title => 'Sailormoon',
-#     :description =>
-#     %{
-#         sailormoon, sailor jupyter, sailor mars, sailor venus.
-#     },
-#     :number_of_chapters => 1,
-#     :category_id => 3,
-#     :cover => "1.png")
-# # Chapter.create(:title =>"Chap 1",
-# #     :content => "sailor moon say hello ",
-# #     :book_id => 2,
-# #     :user_id => 1)
-    
-# Book.create(:title => 'Naruto',
-#     :description =>
-#     %{
-#         Hokage adventure naruto finding sasuke
-#     },
-#     :number_of_chapters => 0,
-#     :category_id => 2,
-#     :cover => "1.png")
+Book.create(:title => 'Sailormoon',
+    :description =>
+    %{
+        sailormoon, sailor jupyter, sailor mars, sailor venus.
+    },
+    :number_of_chapters => 1,
+        :category_id =>3
+)
 
-# Book.create(:title => 'Doraemon',
-#     :description =>
-#     %{
-#         Doraemon, Nobita, Shizuka, Suneo, Jajan, Dekisugi
-#     },
-#     :number_of_chapters => 7, :cover => "1.png")
-# # Chapter.create(:title =>"Chap 1",
-# #     :content => "this is a chapter 1 ",
-# #     :book_id => 4,
-# #     :user_id => 1)
-# # Chapter.create(:title =>"Chap 2",
-# #     :content => "this is a chapter 2 ",
-# #     :book_id => 4,
-# #     :user_id => 1)
-# # Chapter.create(:title =>"Chap 3",
-# #     :content => "this is a chapter 3 ",
-# #     :book_id => 4,
-# #     :user_id => 1)
-# # Chapter.create(:title =>"Chap 4",
-# #     :content => "this is a chapter 4 ",
-# #     :book_id => 4,
-# #     :user_id => 1)
-# # Chapter.create(:title =>"Chap 5",
-# #     :content => "this is a chapter 5 ",
-# #     :book_id => 4,
-# #     :user_id => 1)
-# # Chapter.create(:title =>"Chap 6",
-# #     :content => "this is a chapter 6 ",
-# #     :book_id => 4,
-# #     :user_id => 1)
-# # Chapter.create(:title =>"Chap 7",
-# #     :content => "this is a chapter 7",
-# #     :book_id => 4,
-# #     :user_id => 1)
+Chapter.create(:title =>"Chap 1",
+    :content => "sailor moon say hello ",
+    :book_id => 2,
+    :user_id => 1,
+    :chapter_order =>1
+    )
+    
+Book.create(:title => 'Naruto',
+    :description =>
+    %{
+        Hokage adventure naruto finding sasuke
+    },
+    :number_of_chapters => 0,
+    :category_id => 2
+    )
+
+Book.create(:title => 'Doraemon',
+    :description =>
+    %{
+        Doraemon, Nobita, Shizuka, Suneo, Jajan, Dekisugi
+    },
+    :number_of_chapters => 7,
+    :category_id => 1)
+    
+Chapter.create(:title =>"Chap 1",
+    :content => "this is a chapter 1 ",
+    :book_id => 4,
+    :user_id => 1,
+    :chapter_order =>1)
+Chapter.create(:title =>"Chap 2",
+    :content => "this is a chapter 2 ",
+    :book_id => 4,
+    :user_id => 1,
+    :chapter_order =>2)
+Chapter.create(:title =>"Chap 3",
+    :content => "this is a chapter 3 ",
+    :book_id => 4,
+    :user_id => 1,
+    :chapter_order =>3)
+Chapter.create(:title =>"Chap 4",
+    :content => "this is a chapter 4 ",
+    :book_id => 4,
+    :user_id => 1,
+    :chapter_order =>4)
+Chapter.create(:title =>"Chap 5",
+    :content => "this is a chapter 5 ",
+    :book_id => 4,
+    :user_id => 1,
+    :chapter_order =>5)
+Chapter.create(:title =>"Chap 6",
+    :content => "this is a chapter 6 ",
+    :book_id => 4,
+    :user_id => 1,
+    :chapter_order =>6)
+Chapter.create(:title =>"Chap 7",
+    :content => "this is a chapter 7",
+    :book_id => 4,
+    :user_id => 1,
+    :chapter_order =>7)
     
     
     
     
-# Book.create(:title => 'Harry Potter',
-#     :description =>
-#     %{
-#         Hogwwart and wizard and witch 
-#     },
-#     :number_of_chapters => 1,
-#     :category_id => 2,
-#     :cover => "1.png")
-# # Chapter.create(:title =>"Chap 1",
-# #     :content => "this is a chapter the boy who lives ",
-# #     :book_id => 5,
-# #     :user_id => 1)
+Book.create(:title => 'Harry Potter',
+    :description =>
+    %{
+        Hogwwart and wizard and witch 
+    },
+    :number_of_chapters => 1,
+    :category_id => 2)
+Chapter.create(:title =>"Chap 1",
+    :content => "this is a chapter the boy who lives ",
+    :book_id => 5,
+    :user_id => 1,
+    :chapter_order =>1)
